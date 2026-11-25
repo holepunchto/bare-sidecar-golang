@@ -136,11 +136,13 @@ func isDisconnected(err error) bool {
 		errors.Is(err, windows.ERROR_PIPE_NOT_CONNECTED)
 }
 
-// Windows has no signals, so the process is terminated with exit code 1.
+// Windows has no signals, so the process is terminated with exit code 1. Once
+// waited for, the process is released rather than done, so killing it fails
+// with EINVAL instead of os.ErrProcessDone.
 func terminate(process *os.Process) error {
 	err := process.Kill()
 
-	if errors.Is(err, os.ErrProcessDone) {
+	if errors.Is(err, os.ErrProcessDone) || errors.Is(err, syscall.EINVAL) {
 		return nil
 	}
 

@@ -20,7 +20,7 @@ import (
 
 // Version is the version of this module, whose release provides the
 // prebuilds.
-const Version = "0.1.0"
+const Version = "0.0.0"
 
 // The SHA-256 checksums of the prebuilds attached to the release of this
 // version, which the publish workflow checks before releasing them.

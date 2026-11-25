@@ -20,11 +20,18 @@ import (
 
 // Version is the version of this module, whose release provides the
 // prebuilds.
-const Version = "0.0.0"
+const Version = "0.1.0"
 
 // The SHA-256 checksums of the prebuilds attached to the release of this
 // version, which the publish workflow checks before releasing them.
-var checksums = map[string]string{}
+var checksums = map[string]string{
+	"darwin-arm64": "0e9a0b0608d6b3681aeb759acd5bb0063f7e8319893d447b26c301dced9da879",
+	"darwin-x64":   "cab951d9a4b09960f8d96788771e9f93ea550dfd177836d3e94c8f8d06bde657",
+	"linux-arm64":  "107069cccc8029c8105209a913ed001858dcc95a97d4c01b25bcc772ae2ae06f",
+	"linux-x64":    "5a402ed672869aa551153c466139702a973e4d8d2541f925f06748d18cadd1f8",
+	"win32-arm64":  "0fd5421296b293ce12c950230bdac1e4e9f55d4b0b1370687da9adc44e309cfc",
+	"win32-x64":    "3c94289ad65b47405f54d49e423e1b5afd8b06dd24888f81db21b4b1cd9cf6b9",
+}
 
 const mirror = "https://github.com/holepunchto/bare-sidecar-golang/releases/download"
 
